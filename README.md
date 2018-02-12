@@ -13,7 +13,7 @@ Tourilize is a live and interactive site to visualize band tour dates and genres
 
 This app will only need a single view, with a text input box and selectors for genre or artist. The map displayed with be able to be moused around. 
 
-![alt text](https://imgur.com/BigziKq.png)
+![alt text](https://imgur.com/pOVGJCZ.png)
 
 ## Architecture and Technologies
 * Javascript 

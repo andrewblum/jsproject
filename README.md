@@ -32,10 +32,13 @@ There will be three scripts needed:
 Day 1:
 * Have a basic site with the user input fields that fetches and displays the raw JSON objects from the relevant APIs. 
 * Skeletons for all files. 
+
 Day 2:
 * Manipulate data using D3 into relevant segments 
+
 Day 3: 
 * Display the manipulated data with a basic representation of the geographic mapping
+
 Day 4: 
 * Styling and UI Polish 
 

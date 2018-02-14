@@ -17287,14 +17287,47 @@ document.addEventListener('DOMContentLoaded', () => {
     window.myChart.update();
   });
 
+  document.getElementById('genre-form').addEventListener('submit', e => {
+    e.preventDefault();
+    console.log(e);
+    let genre = document.getElementById('genre-input').value;
+    fetch(`/num_shows_for_genre/${genre}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(body => {
+      genreData = body;
+      return body;
+    })
+    .then(data => {
+      reDrawData(data);
+    });
+  });
+
+
+
+
 });
 
 
-
-
-
-
-
+function reDrawData(data) {
+  let newDatasets = [];
+    Object.keys(data).forEach((key) => {
+      newDatasets.push({
+        label: key,
+        backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.red,
+        borderWidth: 1,
+        data: [{
+          x: randomScalingFactor(),
+          y: randomScalingFactor(),
+          r: data[key]
+        }]
+      });
+    });
+  bubbleChartData.datasets = newDatasets;
+  window.myChart.update();
+}
 
 
 
@@ -17318,7 +17351,7 @@ const randomScalingFactor = function() {
 };
 
 
-
+var genreData = {};
 var DEFAULT_DATASET_SIZE = 7;
 var addedCount = 0;
 var color = __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a.helpers.color;
@@ -17335,30 +17368,6 @@ var bubbleChartData = {
 			x: randomScalingFactor(),
 			y: randomScalingFactor(),
 			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
 		}]
 	}, {
 		label: 'Data 2 thing',
@@ -17366,30 +17375,6 @@ var bubbleChartData = {
 		borderColor: window.chartColors.orange,
 		borderWidth: 1,
 		data: [{
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
-			x: randomScalingFactor(),
-			y: randomScalingFactor(),
-			r: Math.abs(randomScalingFactor()) / 5,
-		}, {
 			x: randomScalingFactor(),
 			y: randomScalingFactor(),
 			r: Math.abs(randomScalingFactor()) / 5,

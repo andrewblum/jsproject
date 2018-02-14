@@ -1,19 +1,4 @@
-<<<<<<< HEAD
-# Simple Node Backend for avoiding CORS issues in development
 
-* `npm install`
-* `webpack`
-* `npm start`
-
-
-# Implementation
-
-This project allows you to serve your HTML and JS from a custom backend that performs API requests to an external API.
-
-`app.js` contains the routes that you need to get your data. Customize them according to the paths you wish to use in your code, and the API you wish to access
-
-Write your JS in the `javascripts` folder; your entry file is `index.js`.
-=======
 ## Tourilize - Band And Genre Tour Visulization 
 
 ### Background and Overview
@@ -68,4 +53,3 @@ Day 4:
 * Clicking on elements links to relevant bands / venues. 
 * Hover pop ups with additional information on each edge on the graph. 
 
->>>>>>> 05244d9dad51e00c079642715affc03d1230d501

@@ -7,6 +7,13 @@ body {
 
 .main-content-box {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-col {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -16,7 +23,7 @@ body {
   margin-top: 100px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 900px;
 }
 
@@ -30,11 +37,28 @@ body {
   font-weight: 700;
   outline: none;
   font-size: 18px;
+  font-family: tahoma;
+}
+
+.genre-label {
+  font-weight: 700;
+  font-size: 20px;
+  font-family: tahoma;
+  margin-right: 20px;
 }
 
 .genre-button:hover {
   cursor: pointer;
   background-color: gray;
+}
+
+#genre-input {
+  outline: none;
+  padding: 3px 7px;
+  font-size: 18px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 5px;
 }
 
 .chart-box {

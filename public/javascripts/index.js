@@ -6,10 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     type: 'bubble',
     data: bubbleChartData,
     options: {
+      legend: {
+        display: false
+      },
       responsive: true,
       title: {
         display: true,
-        text: 'Populairty of genre by region based on # of shows'
+        text: 'upcoming shows for the 250 most popular bands for a genre by state'
       },
       tooltips: {
         mode: 'point'
@@ -17,18 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.getElementById('metal').addEventListener('click', function() {
-    bubbleChartData.datasets.forEach(function(dataset) {
-      dataset.data = dataset.data.map(function() {
-        return {
-          x: randomScalingFactor(),
-          y: randomScalingFactor(),
-          r: Math.abs(randomScalingFactor()) / 5,
-        };
-      });
-    });
-    window.myChart.update();
-  });
+  // document.getElementById('metal').addEventListener('click', function() {
+  //   bubbleChartData.datasets.forEach(function(dataset) {
+  //     dataset.data = dataset.data.map(function() {
+  //       return {
+  //         x: randomScalingFactor(),
+  //         y: randomScalingFactor(),
+  //         r: Math.abs(randomScalingFactor()) / 5,
+  //       };
+  //     });
+  //   });
+  //   window.myChart.update();
+  // });
 
   document.getElementById('genre-form').addEventListener('submit', e => {
     e.preventDefault();

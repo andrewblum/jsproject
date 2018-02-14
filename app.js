@@ -86,7 +86,17 @@ app.get('/country', (req, res) => {
   }).catch(error => console.log(error));
 });
 
-
+//NASS USDA Api call
+app.get('/cows', (req, res) => {
+  fetch("http://quickstats.nass.usda.gov/api/api_GET/?key=DD68082C-DD59-33E5-9844-A8924A1AC3DF&commodity_desc=CATTLE&year__GE=2018&format=JSON&agg_level_desc=STATE")
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(body) {
+      let result = JSON.parse(body);
+      res.send(result);
+    }).catch(error => console.log(error))
+});
 
 
 

@@ -9,46 +9,38 @@
   </head>
   <body>
     <div class="main-content-box">
-
-      <div class="genre-box">
-        <button
-          id="hiphop"
-          class="genre-button">
-          Hip Hop
-        </button>
-        <button
-          id="electronica"
-          class="genre-button">
-          Electronica
-        </button>
-        <button
-          id="metal"
-          class="genre-button">
-          Metal
-        </button>
-        <button
-          id="country"
-          class="genre-button">
-          Country
-        </button>
-        <form id="genre-form">
-          <input
-            id="genre-input"
-            type="text">
-            Enter a Genre:
-          </input>
-          <button
-            type="submit">
-            Search
-          </button>
-        </form>
+      
+      <div class="left-col">
       </div>
 
-      <div class="chart-box">
-        <div class="chart">
-          <canvas id="canvas"></canvas>
+
+      <div class="center-col">
+        <div class="genre-box">
+          <form id="genre-form">
+            <label class="genre-label">
+              Enter a Genre
+            </label>
+              <input
+                id="genre-input"
+                type="text">
+              </input>
+            <button
+              type="submit"
+              class="genre-button">
+              Search
+            </button>
+          </form>
+        </div>
+        <div class="chart-box">
+          <div class="chart">
+            <canvas id="canvas"></canvas>
+          </div>
         </div>
       </div>
+
+      <div class="right-col">
+      </div>
+
 
     </div>
   </body>

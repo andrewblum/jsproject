@@ -12,6 +12,34 @@ body {
   align-items: center;
 }
 
+.logo {
+  font-family: 'Lobster', cursive;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  font-size: 24px;
+}
+
+.git {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  height: 28px;
+  width: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('https://cdn1.iconfinder.com/data/icons/logotypes/32/github-512.png');
+}
+
+.git:hover {
+  cursor: pointer;
+}
+
+.linkedin {
+
+}
+
 .center-col {
   display: flex;
   flex-direction: column;
@@ -20,7 +48,7 @@ body {
 }
 
 .genre-box {
-  margin-top: 100px;
+  margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +65,8 @@ body {
   font-weight: 700;
   outline: none;
   font-size: 18px;
-  font-family: tahoma;
+  font-family: Futura;
+
 }
 
 .genre-label {
@@ -52,6 +81,25 @@ body {
   background-color: gray;
 }
 
+.search-icon {
+  height: 28px;
+  width: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('http://wfarm1.dataknet.com/static/resources/icons/set94/894f0362.png');
+}
+
+.music-icon {
+  margin-right: 15px;
+  height: 58px;
+  width: 58px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('https://www.shareicon.net/download/2015/09/25/106879_multimedia_512x512.png');
+}
+
 #genre-input {
   outline: none;
   padding: 3px 7px;
@@ -59,16 +107,88 @@ body {
   margin-right: 20px;
   border: none;
   border-radius: 5px;
+  color: rgba(239, 108, 151, 1);
+  font-weight: 700;
 }
 
 .chart-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .chart {
-  width: 800px;
-  height: 800px;
-  margin-top: 60px;
+  width: 1000px;
+  height: 600px;
+  margin-top: 50px;
+}
+
+.left-col {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ag-form {
+  position: absolute;
+  left: -190px;
+  top: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ag-label {
+  font-weight: 700;
+  font-size: 14px;
+  font-family: Futura;
+}
+
+#ag-input {
+  outline: none;
+  padding: 3px 7px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.ag-button {
+
+  border-radius: 5px;
+  width: 180px;
+  padding: 3px 7px;
+  color: black;
+  border: 1px solid black;
+  background-color: lightgray;
+  font-weight: 700;
+  outline: none;
+  font-size: 14px;
+  font-family: Futura;
+  margin-top: 10px;
+}
+
+.ag-button:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+
+.map-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  z-index: 10;
+  padding-bottom: 40px;
+}
+
+
+#map {
+  height: 700px;
+  width: 80%;
 }

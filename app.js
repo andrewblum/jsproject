@@ -17,8 +17,6 @@ app.listen(PORT, () => {
 app.use(express.static('public'));
 
 
-
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 });
@@ -87,20 +85,36 @@ app.get('/country', (req, res) => {
 });
 
 //NASS USDA Api call
-app.get('/cows', (req, res) => {
-  fetch("http://quickstats.nass.usda.gov/api/api_GET/?key=DD68082C-DD59-33E5-9844-A8924A1AC3DF&commodity_desc=CATTLE&year__GE=2018&format=JSON&agg_level_desc=STATE")
-    .then(function(response) {
-      return response.text();
+app.get('/ag_commodity_for_states/:commodity', (req, res) => {
+  let promiseArr = [];
+  let resultHash = {};
+  Object.keys(STATES).forEach(state => {
+    promiseArr.push(agCommodityForState(req.params.commodity, state))
+  });
+  Promise.all(promiseArr).then(resultArr => {
+    resultArr.forEach(singleResult => {
+      resultHash[singleResult.state] = singleResult.count;
     })
-    .then(function(body) {
-      let result = JSON.parse(body);
-      res.send(result);
-    }).catch(error => console.log(error))
+    res.send(resultHash);
+  }).catch(error => console.log(error))
 });
 
 
 
 //////////    utils
+
+async function agCommodityForState(commodity, state) {
+  return fetch(`http://quickstats.nass.usda.gov/api/get_counts/?key=DD68082C-DD59-33E5-9844-A8924A1AC3DF&commodity_desc=${commodity}&year__GE=2012&state_alpha=${state}`)
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(body) {
+      let result = JSON.parse(body);
+      result['state'] = state;
+      return result;
+    }).catch(error => console.log(error))
+}
+
 
 async function showsFromNames(arr) {
   let promiseArr = [];
@@ -111,7 +125,6 @@ async function showsFromNames(arr) {
   await Promise.all(promiseArr).then(resultArr => {
     resultArr.forEach(singleResult => {
       if (singleResult.length > 0) {
-        console.log(singleResult[0].artist_id);
         shows[singleResult[0].artist_id] = singleResult;
       }
     });
@@ -163,7 +176,7 @@ async function bandsintownShowsFromName(artist) {
     .then(function(body) {
       let result = JSON.parse(body);
       return result;
-    }).catch(error => console.log(error));
+    }).catch(error => error);
 }
 
 const topBandsForCountry = (country) => (
@@ -181,3 +194,61 @@ const topBandsForCountry = (country) => (
 
 
 //eventful key DPv5KKhqfgdKTxQm
+
+
+
+
+
+const STATES = {
+    "AL": "Alabama",
+    "AK": "Alaska",
+    "AZ": "Arizona",
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
+    "DE": "Delaware",
+    "DC": "District Of Columbia",
+    "FL": "Florida",
+    "GA": "Georgia",
+    "HI": "Hawaii",
+    "ID": "Idaho",
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "IA": "Iowa",
+    "KS": "Kansas",
+    "KY": "Kentucky",
+    "LA": "Louisiana",
+    "ME": "Maine",
+    "MD": "Maryland",
+    "MA": "Massachusetts",
+    "MI": "Michigan",
+    "MN": "Minnesota",
+    "MS": "Mississippi",
+    "MO": "Missouri",
+    "MT": "Montana",
+    "NE": "Nebraska",
+    "NV": "Nevada",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NM": "New Mexico",
+    "NY": "New York",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "OH": "Ohio",
+    "OK": "Oklahoma",
+    "OR": "Oregon",
+    "PA": "Pennsylvania",
+    "RI": "Rhode Island",
+    "SC": "South Carolina",
+    "SD": "South Dakota",
+    "TN": "Tennessee",
+    "TX": "Texas",
+    "UT": "Utah",
+    "VT": "Vermont",
+    "VA": "Virginia",
+    "WA": "Washington",
+    "WV": "West Virginia",
+    "WI": "Wisconsin",
+    "WY": "Wyoming"
+}

@@ -9,13 +9,11 @@ const $ = require('jquery');
 var parseString = require('xml2js').parseString;
 var parser = require('xml2json');
 
-
 app.listen(PORT, () => {
   console.log(__dirname);
   console.log(`listening on ${PORT}`);
 });
 app.use(express.static('public'));
-
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
@@ -99,9 +97,7 @@ app.get('/ag_commodity_for_states/:commodity', (req, res) => {
   }).catch(error => console.log(error))
 });
 
-
-
-//////////    utils
+//utils
 
 async function agCommodityForState(commodity, state) {
   return fetch(`http://quickstats.nass.usda.gov/api/get_counts/?key=DD68082C-DD59-33E5-9844-A8924A1AC3DF&commodity_desc=${commodity}&year__GE=2012&state_alpha=${state}`)
@@ -190,15 +186,6 @@ const topBandsForCountry = (country) => (
     }).catch((error) => console.log(error))
 );
 
-
-
-
-//eventful key DPv5KKhqfgdKTxQm
-
-
-
-
-
 const STATES = {
     "AL": "Alabama",
     "AK": "Alaska",
@@ -251,4 +238,4 @@ const STATES = {
     "WV": "West Virginia",
     "WI": "Wisconsin",
     "WY": "Wyoming"
-}
+};

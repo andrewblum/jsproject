@@ -17275,6 +17275,13 @@ document.addEventListener('DOMContentLoaded', () => {
         text: 'upcoming shows for the 250 most popular bands for a genre by state'
       },
       tooltips: {
+        callbacks: {
+           label: function(t, d) {
+             console.log(t);
+              return STATES[d.datasets[t.datasetIndex].label] + ' '
+                + Window.commodity + ': ' + Math.floor(t.yLabel);
+           }
+        },
         mode: 'point'
       },
       scaleLabel: {
@@ -17311,9 +17318,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('ag-form').addEventListener('submit', e => {
     e.preventDefault();
-    let commodity = document.getElementById('ag-input')
+    Window.commodity = document.getElementById('ag-input')
       .value.toUpperCase();
-    fetch(`/ag_commodity_for_states/${commodity}`)
+    fetch(`/ag_commodity_for_states/${Window.commodity}`)
       .then(response => {
         return response.json();
       })
@@ -17333,7 +17340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     accessToken: 'sk.eyJ1IjoiYW5kcmV3Ymx1bSIsImEiOiJjamRvdnBjOGYwcXRmMnhxcGc3MW1jdDUwIn0.PTE1CiY6Ju_Quj75YZ4RSQ'
   });
   tile.addTo(Window.map);
-
+  Window.map.scrollWheelZoom.disable();
 });
 
 function mapShows(obj) {
@@ -17343,7 +17350,6 @@ function mapShows(obj) {
       let lineup = show.lineup;
       let date = show.datetime.slice(0,10);
       let venue = show.venue.name;
-      console.log(show);
       let lat = parseFloat(show.venue.latitude);
       let lng = parseFloat(show.venue.longitude);
       let marker = __WEBPACK_IMPORTED_MODULE_1_leaflet___default.a.marker([lat, lng]).addTo(Window.map);
@@ -17396,6 +17402,60 @@ var bubbleChartData = {
 		duration: 10000
 	},
 	datasets: []
+};
+
+const STATES = {
+    "AL": "Alabama",
+    "AK": "Alaska",
+    "AZ": "Arizona",
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
+    "DE": "Delaware",
+    "DC": "District Of Columbia",
+    "FL": "Florida",
+    "GA": "Georgia",
+    "HI": "Hawaii",
+    "ID": "Idaho",
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "IA": "Iowa",
+    "KS": "Kansas",
+    "KY": "Kentucky",
+    "LA": "Louisiana",
+    "ME": "Maine",
+    "MD": "Maryland",
+    "MA": "Massachusetts",
+    "MI": "Michigan",
+    "MN": "Minnesota",
+    "MS": "Mississippi",
+    "MO": "Missouri",
+    "MT": "Montana",
+    "NE": "Nebraska",
+    "NV": "Nevada",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NM": "New Mexico",
+    "NY": "New York",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "OH": "Ohio",
+    "OK": "Oklahoma",
+    "OR": "Oregon",
+    "PA": "Pennsylvania",
+    "RI": "Rhode Island",
+    "SC": "South Carolina",
+    "SD": "South Dakota",
+    "TN": "Tennessee",
+    "TX": "Texas",
+    "UT": "Utah",
+    "VT": "Vermont",
+    "VA": "Virginia",
+    "WA": "Washington",
+    "WV": "West Virginia",
+    "WI": "Wisconsin",
+    "WY": "Wyoming"
 };
 
 //mapbox

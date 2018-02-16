@@ -15,14 +15,15 @@ body {
 .logo {
   font-family: 'Lobster', cursive;
   position: absolute;
-  top: 3px;
+  top: 0px;
   left: 4px;
-  font-size: 24px;
+  font-size: 28px;
 }
 
-.git {
+.git a {
+  border: 1px solid #3a3a3c;
   position: absolute;
-  top: 3px;
+  top: 4px;
   right: 4px;
   height: 28px;
   width: 28px;
@@ -32,12 +33,29 @@ body {
   background-image: url('https://cdn1.iconfinder.com/data/icons/logotypes/32/github-512.png');
 }
 
-.git:hover {
+.git a:hover {
   cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid rgba(70, 169, 210, 0.9);
 }
 
-.linkedin {
+.linkedin a {
+  border: 1px solid #3a3a3c;
+  position: absolute;
+  top: 4px;
+  right: 37px;
+  height: 28px;
+  width: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('http://www.pvhc.net/img162/bjhzycjtxmoqcvvsiano.png');
+}
 
+.linkedin a:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 108, 151, 0.9);
 }
 
 .center-col {
@@ -72,8 +90,8 @@ body {
 .genre-label {
   font-weight: 700;
   font-size: 20px;
-  font-family: tahoma;
-  margin-right: 20px;
+  font-family: Futura;
+  margin-right: 15px;
 }
 
 .genre-button:hover {
@@ -132,10 +150,20 @@ body {
   align-items: center;
 }
 
+.ag-icon {
+  margin-bottom: 7px;
+  height: 58px;
+  width: 58px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('https://imgur.com/tC072Zy.png');
+}
+
 #ag-form {
   position: absolute;
   left: -190px;
-  top: 38%;
+  top: 34%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -144,7 +172,7 @@ body {
 
 .ag-label {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 20px;
   font-family: Futura;
 }
 
@@ -155,6 +183,7 @@ body {
   border: none;
   border-radius: 5px;
   margin-top: 10px;
+  font-weight: 700;
 }
 
 .ag-button {

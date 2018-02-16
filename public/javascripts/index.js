@@ -2,6 +2,9 @@ import Chart from 'chart.js';
 import L from 'leaflet';
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadGenre('Smooth Jazz');
+  Window.commodity = 'MUSHROOMS';
+  loadAg();
   var ctx = document.getElementById('canvas').getContext('2d');
   window.myChart = new Chart(ctx, {
     type: 'bubble',
@@ -18,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       tooltips: {
         callbacks: {
            label: function(t, d) {
-             console.log(t);
               return STATES[d.datasets[t.datasetIndex].label] + ' '
                 + Window.commodity + ': ' + Math.floor(t.yLabel);
            }
@@ -34,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('genre-form').addEventListener('submit', e => {
     e.preventDefault();
     let genre = document.getElementById('genre-input').value;
+    loadGenre(genre);
+  });
+
+
+  function loadGenre(genre) {
     fetch(`/num_shows_for_genre/${genre}`)
     .then(response => {
       return response.json();
@@ -55,23 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
           return body;
         });
     });
-  });
+  }
 
   document.getElementById('ag-form').addEventListener('submit', e => {
     e.preventDefault();
     Window.commodity = document.getElementById('ag-input')
       .value.toUpperCase();
-    fetch(`/ag_commodity_for_states/${Window.commodity}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(body => {
-        return body;
-      })
-      .then(data => {
-        reDrawX(data);
-      });
+    loadAg();
   });
+
+  function loadAg() {
+  fetch(`/ag_commodity_for_states/${Window.commodity}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(body => {
+      return body;
+    })
+    .then(data => {
+      reDrawX(data);
+    });
+  }
 
   Window.map = L.map('map', {attributionControl: false}).setView([40, -50], 3);
   let tile = L.tileLayer('https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

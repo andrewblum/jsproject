@@ -3,7 +3,7 @@
 
 ### Background and Overview
 
-Tourilize is a live and interactive site to visualize band tour dates and genres with geographic data over time. Users will be able to enter a genre and see number of shows sorted by location into a bubble graph. Each bubble will represent a location (such as a State), and it's size will represent number of shows in that location for the chosen genre.
+Tourilize is a live and interactive site to visualize band tour dates on a map for the most popular bands in a given genre and display how many shows are in each state, sorted by agricultural commodity. Yes, that's right, now you can see how mushroom production corresponds to smooth jazz concerts, as I'm sure you've always wanted to. Users can enter a genre and see number of shows sorted by State into a bubble graph. Each bubble represents a location (such as a State), and it's size represents number of shows in that location for the chosen genre. By searching Last.fm for the 250 most popular bands with that tag (genre), and then searching AudioScrobbler, BandIsInTown, and Eventful for shows, zoning them by region and counting them, we can estimate popularity. On the left side, you can search agricultural products from USDA National Agricultural Statistics Service API to arrange state on the Y axis by items such as avacado production or heads of cattle. 
 
 ## Functionality & MVP
 
